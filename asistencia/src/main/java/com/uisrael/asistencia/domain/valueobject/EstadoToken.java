@@ -1,4 +1,4 @@
-package com.uisrael.asistencia.domain;
+package com.uisrael.asistencia.domain.valueobject;
 
 public enum EstadoToken {
     PENDIENTE,

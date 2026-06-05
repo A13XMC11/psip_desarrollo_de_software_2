@@ -63,6 +63,39 @@ Excepciones con significado de negocio — no son errores técnicos, son situaci
 
 ---
 
+## Value Objects — Detalle
+
+### ¿Qué es un `record` en Java 21?
+Un `record` es una clase inmutable por defecto. No necesitas getters, setters ni constructor manual.
+El bloque `public NombreRecord { }` es el **constructor compacto** — ahí van las validaciones antes de crear el objeto.
+
+```java
+public record Email(String valor) {
+    public Email {
+        // validaciones aquí — si falla, lanza excepción y el objeto nunca se crea
+    }
+}
+```
+
+### ¿Qué es CIDR?
+Es una notación para definir rangos de IPs. Ejemplo: `192.168.1.0/24` significa todas las IPs desde `192.168.1.0` hasta `192.168.1.255`.
+Se usa para validar que el empleado está conectado a la red Wi-Fi de la empresa.
+
+### Enums creados
+| Enum | Valores |
+|------|---------|
+| `TipoMarcacion` | `ENTRADA`, `SALIDA_ALMUERZO`, `ENTRADA_ALMUERZO`, `SALIDA_FINAL` |
+| `EstadoToken` | `PENDIENTE`, `USADO`, `EXPIRADO`, `RECHAZADO` |
+| `EstadoMarcacion` | `CORRECTA`, `TARDIA`, `INCOMPLETA`, `INVALIDA` |
+
+### Value objects creados
+| Clase | Qué valida |
+|-------|-----------|
+| `Email` | Formato de correo electrónico |
+| `RangoIp` | Rango de IPs en formato CIDR |
+
+---
+
 ## Regla de Oro del Dominio
 
 > El paquete `domain` **nunca** importa nada de Spring, JPA ni javax.
